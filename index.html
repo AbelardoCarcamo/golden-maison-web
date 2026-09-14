@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Golden Maison Studio Floral: diseño floral de autor, arreglos exclusivos y entregas en Ciudad de Panamá y toda la Provincia de Panamá.">
+  <title>Golden Maison - Studio Floral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <style>
+    :root {
+      --charcoal: #121212;
+      --charcoal-2: #181818;
+      --panel: #222222;
+      --panel-soft: #1d1d1d;
+      --red: #E52E2E;
+      --red-dark: #bd2020;
+      --gold: #D4AF37;
+      --white: #FFFFFF;
+      --muted: #bcbcbc;
+      --muted-2: #898989;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.38);
+      --sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: "Cormorant Garamond", Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--charcoal);
+      color: var(--white);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .brand-name span:first-child {
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .brand-name span:last-child {
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-top: 4px;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+      transition: color 180ms ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1px;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--white);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      padding: 0 22px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 16px 30px rgba(229, 46, 46, 0.25);
+    }
+
+    .btn-red:hover,
+    .btn-red:focus-visible {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(18, 18, 18, 0.3);
+      color: var(--white);
+    }
+
+    .btn-outline:hover,
+    .btn-outline:focus-visible {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(92vh - 78px);
+      display: grid;
+      align-items: end;
+      isolation: isolate;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(18, 18, 18, 0.94) 0%, rgba(18, 18, 18, 0.72) 43%, rgba(18, 18, 18, 0.24) 100%),
+        linear-gradient(0deg, rgba(18, 18, 18, 0.98) 0%, rgba(18, 18, 18, 0.24) 47%, rgba(18, 18, 18, 0.72) 100%),
+        url("https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=2200&q=85") center right / cover;
+      z-index: -2;
+      transform: scale(1.01);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(90deg, #000 0%, transparent 64%);
+      z-index: -1;
+      opacity: 0.45;
+    }
+
+    .hero-inner {
+      padding: 96px 0 44px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-copy {
+      width: min(760px, 100%);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      color: var(--white);
+      line-height: 0.96;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(4.3rem, 9vw, 8.7rem);
+      letter-spacing: 0;
+    }
+
+    h1 em {
+      color: var(--red);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .hero-subtitle {
+      width: min(660px, 100%);
+      margin: 28px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 175, 55, 0.34);
+      background: rgba(18, 18, 18, 0.58);
+      color: rgba(255, 255, 255, 0.88);
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .badge svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+    }
+
+    .section {
+      padding: 106px 0;
+      background: var(--charcoal);
+    }
+
+    .section.alt {
+      background: var(--charcoal-2);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(280px, 0.46fr);
+      gap: 44px;
+      align-items: end;
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(3rem, 6vw, 5.8rem);
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .catalog {
+      display: grid;
+      gap: 34px;
+    }
+
+    .category {
+      display: grid;
+      grid-template-columns: minmax(230px, 0.35fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      padding-top: 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .category-intro {
+      position: sticky;
+      top: 104px;
+    }
+
+    .category-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 50%;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 700;
+    }
+
+    .category h3 {
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      line-height: 1;
+    }
+
+    .category-note {
+      margin: 14px 0 0;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .product-card {
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .product-media {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #0f0f0f;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+
+    .product-card:hover .product-media img {
+      transform: scale(1.045);
+    }
+
+    .product-tag {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      border-radius: 999px;
+      background: rgba(18, 18, 18, 0.74);
+      border: 1px solid rgba(212, 175, 55, 0.42);
+      color: var(--gold);
+      padding: 5px 11px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .product-body {
+      padding: 22px;
+    }
+
+    .product-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .product-body h4 {
+      margin: 0;
+      color: var(--white);
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .price-note {
+      flex: 0 0 auto;
+      border: 1px solid rgba(229, 46, 46, 0.42);
+      color: #ffdddd;
+      background: rgba(229, 46, 46, 0.1);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-align: center;
+      max-width: 128px;
+      line-height: 1.25;
+    }
+
+    .product-body p {
+      min-height: 52px;
+      margin: 16px 0 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .product-card .btn {
+      width: 100%;
+      min-height: 46px;
+      padding: 0 16px;
+      font-size: 0.8rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-card {
+      min-height: 270px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.38);
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.06);
+    }
+
+    .info-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .info-card h3 {
+      font-size: 2.1rem;
+      line-height: 1;
+    }
+
+    .info-card p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .payment-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .payment-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 8px 12px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .payment-tag svg {
+      width: 15px;
+      height: 15px;
+      color: var(--red);
+    }
+
+    .availability-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 26px;
+      align-items: center;
+      margin-top: 34px;
+      padding: 30px 0 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .availability-strip p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.4vw, 3rem);
+      line-height: 1;
+    }
+
+    .availability-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .social-section {
+      padding: 0 0 106px;
+      background: var(--charcoal-2);
+    }
+
+    .social-banner {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      min-height: 470px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--charcoal);
+    }
+
+    .social-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px max(40px, calc((100vw - 1180px) / 2));
+      padding-right: 56px;
+    }
+
+    .social-copy h2 {
+      font-size: clamp(3.2rem, 5.6vw, 6.2rem);
+    }
+
+    .social-copy p {
+      margin: 20px 0 32px;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 470px;
+    }
+
+    .social-mosaic {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      min-height: 470px;
+      overflow: hidden;
+    }
+
+    .social-shot {
+      position: relative;
+      min-height: 470px;
+      overflow: hidden;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      background: #101010;
+    }
+
+    .social-shot:nth-child(even) {
+      transform: translateY(30px);
+    }
+
+    .social-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.93) contrast(1.06);
+      transition: transform 500ms ease;
+    }
+
+    .social-shot:hover img {
+      transform: scale(1.04);
+    }
+
+    .social-handle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: #0d0d0d;
+      padding: 44px 0;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.8fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .footer p {
+      margin: 10px 0 0;
+      color: var(--muted-2);
+      font-size: 0.86rem;
+    }
+
+    .footer-links,
+    .footer-payments {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a,
+    .footer-payments span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .footer-links svg {
+      width: 15px;
+      height: 15px;
+      color: var(--red);
+    }
+
+    .footer-payments {
+      justify-content: flex-end;
+    }
+
+    .footer-payments span {
+      color: var(--gold);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 650ms ease, transform 650ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        position: fixed;
+        inset: 78px 0 auto;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 18px 20px 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.92);
+      }
+
+      body.menu-open .nav-links {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav .btn-red {
+        display: none;
+      }
+
+      .section-head,
+      .category,
+      .social-banner,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .category-intro {
+        position: static;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .social-copy {
+        padding: 72px 40px 40px;
+      }
+
+      .social-mosaic {
+        grid-template-columns: repeat(4, minmax(160px, 1fr));
+        overflow-x: auto;
+      }
+
+      .footer-links,
+      .footer-payments {
+        justify-content: flex-start;
+      }
+
+      .availability-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .availability-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav {
+        min-height: 70px;
+      }
+
+      .brand-name {
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+      }
+
+      .brand-name span:last-child {
+        font-size: 0.62rem;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+      }
+
+      .nav-links {
+        inset: 70px 0 auto;
+      }
+
+      .hero {
+        min-height: calc(91vh - 70px);
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(0deg, rgba(18, 18, 18, 0.98) 0%, rgba(18, 18, 18, 0.68) 52%, rgba(18, 18, 18, 0.84) 100%),
+          url("https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1400&q=82") center / cover;
+      }
+
+      .hero-inner {
+        padding: 76px 0 34px;
+      }
+
+      h1 {
+        font-size: clamp(3.45rem, 17vw, 5.4rem);
+      }
+
+      .hero-actions,
+      .hero-badges {
+        align-items: stretch;
+      }
+
+      .hero-actions .btn,
+      .hero-badges .badge {
+        width: 100%;
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .section-head {
+        gap: 18px;
+        margin-bottom: 34px;
+      }
+
+      h2 {
+        font-size: clamp(2.7rem, 14vw, 4.2rem);
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-title-row {
+        flex-direction: column;
+      }
+
+      .price-note {
+        max-width: none;
+      }
+
+      .info-card {
+        min-height: auto;
+        padding: 24px;
+      }
+
+      .availability-actions,
+      .availability-actions .btn {
+        width: 100%;
+      }
+
+      .social-section {
+        padding-bottom: 76px;
+      }
+
+      .social-copy {
+        padding: 66px 20px 34px;
+      }
+
+      .social-mosaic {
+        grid-template-columns: repeat(4, minmax(74vw, 1fr));
+        min-height: 360px;
+      }
+
+      .social-shot,
+      .social-shot:nth-child(even) {
+        min-height: 360px;
+        transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Golden Maison Studio Floral">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="Ícono floral Golden Maison">
+          <circle cx="32" cy="32" r="5.5" fill="#D4AF37"></circle>
+          <ellipse cx="32" cy="15" rx="6.6" ry="13" fill="#FFFFFF"></ellipse>
+          <ellipse cx="32" cy="49" rx="6.6" ry="13" fill="#FFFFFF"></ellipse>
+          <ellipse cx="15" cy="32" rx="13" ry="6.6" fill="#FFFFFF"></ellipse>
+          <ellipse cx="49" cy="32" rx="13" ry="6.6" fill="#FFFFFF"></ellipse>
+          <ellipse cx="20" cy="20" rx="6" ry="12" fill="#FFFFFF" transform="rotate(-45 20 20)"></ellipse>
+          <ellipse cx="44" cy="20" rx="6" ry="12" fill="#FFFFFF" transform="rotate(45 44 20)"></ellipse>
+          <ellipse cx="20" cy="44" rx="6" ry="12" fill="#FFFFFF" transform="rotate(45 20 44)"></ellipse>
+          <ellipse cx="44" cy="44" rx="6" ry="12" fill="#FFFFFF" transform="rotate(-45 44 44)"></ellipse>
+        </svg>
+          <span class="brand-name">
+          <span>GOLDEN MAISON</span>
+          <span>- Studio Floral</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Secciones del sitio">
+        <a href="#inicio">Inicio</a>
+        <a href="#menu-floral">Menú Floral</a>
+        <a href="#envios-pagos">Envíos &amp; Pagos</a>
+        <a href="#sobre-nosotros">Sobre Nosotros</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-red" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer" aria-label="Enviar DM en Instagram a Golden Maison">
+          <i data-lucide="instagram" aria-hidden="true"></i>
+          Enviar DM en Instagram
+        </a>
+        <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="Abrir menú">
+          <i data-lucide="menu" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <p class="kicker">Panamá · Diseño floral boutique</p>
+          <h1 id="hero-title">Un <em>te quiero</em> disfrazado de flores</h1>
+          <p class="hero-subtitle">Diseño floral de autor y arreglos exclusivos en la Provincia de Panamá. Elevamos tus sentimientos a piezas de arte.</p>
+          <div class="hero-actions" aria-label="Acciones principales">
+            <a class="btn btn-red" href="#menu-floral">
+              <i data-lucide="flower" aria-hidden="true"></i>
+              Explorar Menú Floral
+            </a>
+            <a class="btn btn-outline" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+              <i data-lucide="message-circle" aria-hidden="true"></i>
+              Cotizar por Instagram
+            </a>
+          </div>
+          <div class="hero-badges" aria-label="Detalles de servicio">
+            <span class="badge"><i data-lucide="map-pin" aria-hidden="true"></i>Entregas en Ciudad de Panamá y toda la Provincia</span>
+            <span class="badge"><i data-lucide="credit-card" aria-hidden="true"></i>Aceptamos Yappy, ACH y Efectivo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu-floral" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-label">Menú Floral</span>
+            <h2 id="menu-title">Piezas de autor para gestos inolvidables.</h2>
+          </div>
+          <p class="section-copy">Cada arreglo se prepara bajo pedido con selección fresca, composición editorial y empaque boutique. Escríbenos por Instagram para confirmar disponibilidad del día.</p>
+        </div>
+
+        <div class="catalog">
+          <article class="category reveal">
+            <div class="category-intro">
+              <span class="category-number">01</span>
+              <h3>Ramos de Rosas</h3>
+              <p class="category-note">Clásicos & Pasión</p>
+            </div>
+            <div class="product-grid">
+              <article class="product-card">
+                <div class="product-media">
+                  <span class="product-tag">Rosas rojas</span>
+                  <!-- REEMPLAZAR CON FOTO REAL DE GOLDEN MAISON -->
+                  <img src="https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?auto=format&fit=crop&w=900&q=82" alt="Ramo de rosas rojas con estética boutique" loading="lazy">
+                </div>
+                <div class="product-body">
+                  <div class="product-title-row">
+                    <h4>Ramo Red Carmine</h4>
+                    <span class="price-note">Consultar precio por DM</span>
+                  </div>
+                  <p>Rosas rojas seleccionadas con envoltura boutique.</p>
+                  <a class="btn btn-red" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="instagram" aria-hidden="true"></i>
+                    Pedir por DM en Instagram
+                  </a>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-media">
+                  <span class="product-tag">Editorial</span>
+                  <!-- REEMPLAZAR CON FOTO REAL DE GOLDEN MAISON -->
+                  <img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=900&q=82" alt="Ramo de rosas blancas de acabado editorial" loading="lazy">
+                </div>
+                <div class="product-body">
+                  <div class="product-title-row">
+                    <h4>Ramo Noir & White</h4>
+                    <span class="price-note">Cotizar por DM</span>
+                  </div>
+                  <p>Rosas blancas puras con acabado editorial.</p>
+                  <a class="btn btn-red" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="instagram" aria-hidden="true"></i>
+                    Pedir por DM en Instagram
+                  </a>
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="category reveal">
+            <div class="category-intro">
+              <span class="category-number">02</span>
+              <h3>Claveles &amp; Texturas</h3>
+              <p class="category-note">Elegancia Duradera</p>
+            </div>
+            <div class="product-grid">
+              <article class="product-card">
+                <div class="product-media">
+                  <span class="product-tag">Duradero</span>
+                  <!-- REEMPLAZAR CON FOTO REAL DE GOLDEN MAISON -->
+                  <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=82" alt="Bouquet de flores cálidas con texturas finas" loading="lazy">
+                </div>
+                <div class="product-body">
+                  <div class="product-title-row">
+                    <h4>Bouquet Clavel Imperial</h4>
+                    <span class="price-note">Consultar precio por DM</span>
+                  </div>
+                  <p>Claveles matizados en tonos cálidos con detalles finos.</p>
+                  <a class="btn btn-red" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="instagram" aria-hidden="true"></i>
+                    Pedir por DM en Instagram
+                  </a>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-media">
+                  <span class="product-tag">Pastel</span>
+                  <!-- REEMPLAZAR CON FOTO REAL DE GOLDEN MAISON -->
+                  <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=900&q=82" alt="Bouquet pastel con claveles y flores complementarias" loading="lazy">
+                </div>
+                <div class="product-body">
+                  <div class="product-title-row">
+                    <h4>Maison Pastel</h4>
+                    <span class="price-note">Cotizar por DM</span>
+                  </div>
+                  <p>Combinación suave de claveles y flores complementarias.</p>
+                  <a class="btn btn-red" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="instagram" aria-hidden="true"></i>
+                    Pedir por DM en Instagram
+                  </a>
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="category reveal">
+            <div class="category-intro">
+              <span class="category-number">03</span>
+              <h3>Mixtos &amp; Silvestres</h3>
+              <p class="category-note">Diseño de Autor</p>
+            </div>
+            <div class="product-grid">
+              <article class="product-card">
+                <div class="product-media">
+                  <span class="product-tag">Temporada</span>
+                  <!-- REEMPLAZAR CON FOTO REAL DE GOLDEN MAISON -->
+                  <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=900&q=82" alt="Arreglo floral mixto de temporada con toque silvestre" loading="lazy">
+                </div>
+                <div class="product-body">
+                  <div class="product-title-row">
+                    <h4>Golden Romance</h4>
+                    <span class="price-note">Consultar precio por DM</span>
+                  </div>
+                  <p>Selección de temporada con toque silvestre y lazo de seda.</p>
+                  <a class="btn btn-red" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="instagram" aria-hidden="true"></i>
+                    Pedir por DM en Instagram
+                  </a>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-media">
+                  <span class="product-tag">Caja de lujo</span>
+                  <!-- REEMPLAZAR CON FOTO REAL DE GOLDEN MAISON -->
+                  <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=900&q=82" alt="Arreglo floral en caja de lujo con flores mixtas" loading="lazy">
+                </div>
+                <div class="product-body">
+                  <div class="product-title-row">
+                    <h4>Studio Signature Box</h4>
+                    <span class="price-note">Cotizar por DM</span>
+                  </div>
+                  <p>Arreglo especial en caja de lujo.</p>
+                  <a class="btn btn-red" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="instagram" aria-hidden="true"></i>
+                    Pedir por DM en Instagram
+                  </a>
+                </div>
+              </article>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="envios-pagos" aria-labelledby="envios-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-label">Envíos &amp; Pagos</span>
+            <h2 id="envios-title">Detalles cuidados de principio a fin.</h2>
+          </div>
+          <p class="section-copy">Coordinamos cada pedido por DM para confirmar flores disponibles, horario ideal de entrega y mensaje personalizado.</p>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card reveal">
+            <span class="info-icon"><i data-lucide="car" aria-hidden="true"></i></span>
+            <h3>Zona de Cobertura</h3>
+            <p>Envíos coordinados a domicilio en <strong>Ciudad de Panamá y toda la Provincia de Panamá</strong>.</p>
+          </article>
+
+          <article class="info-card reveal">
+            <span class="info-icon"><i data-lucide="wallet" aria-hidden="true"></i></span>
+            <h3>Métodos de Pago Aceptados</h3>
+            <p>Pagos cómodos y confirmación ágil para reservar tu arreglo.</p>
+            <div class="payment-tags" aria-label="Métodos de pago aceptados">
+              <span class="payment-tag"><i data-lucide="smartphone" aria-hidden="true"></i>Yappy</span>
+              <span class="payment-tag"><i data-lucide="landmark" aria-hidden="true"></i>ACH</span>
+              <span class="payment-tag"><i data-lucide="banknote" aria-hidden="true"></i>Efectivo</span>
+            </div>
+          </article>
+
+          <article class="info-card reveal">
+            <span class="info-icon"><i data-lucide="mail" aria-hidden="true"></i></span>
+            <h3>Detalle Especial</h3>
+            <p>Cada entrega incluye una tarjeta con mensaje personalizado redactado a mano.</p>
+          </article>
+        </div>
+
+        <div class="availability-strip reveal" aria-label="Consultar disponibilidad y cotizar arreglo">
+          <p>¿Tienes una fecha especial cerca?</p>
+          <div class="availability-actions">
+            <a class="btn btn-red" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+              <i data-lucide="calendar" aria-hidden="true"></i>
+              Consultar Disponibilidad
+            </a>
+            <a class="btn btn-outline" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+              <i data-lucide="send" aria-hidden="true"></i>
+              Cotizar Arreglo
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="social-section" id="sobre-nosotros" aria-labelledby="social-title">
+      <div class="social-banner">
+        <div class="social-copy reveal">
+          <span class="social-handle"><i data-lucide="instagram" aria-hidden="true"></i>Comunidad floral</span>
+          <h2 id="social-title">Síguenos en @golden_mflowers</h2>
+          <p>Descubre arreglos recientes, piezas de temporada y disponibilidad para entregas especiales en Panamá.</p>
+          <a class="btn btn-red" href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="instagram" aria-hidden="true"></i>
+            Ver Instagram
+          </a>
+        </div>
+        <div class="social-mosaic" aria-label="Imágenes de inspiración floral">
+          <div class="social-shot">
+            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=680&q=82" alt="Rosas rosadas en arreglo floral" loading="lazy">
+          </div>
+          <div class="social-shot">
+            <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=680&q=82" alt="Flores frescas en composición delicada" loading="lazy">
+          </div>
+          <div class="social-shot">
+            <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=680&q=82" alt="Bouquet de flores mixtas de inspiración editorial" loading="lazy">
+          </div>
+          <div class="social-shot">
+            <img src="https://images.unsplash.com/photo-1509719662281-8284de305f19?auto=format&fit=crop&w=680&q=82" alt="Detalle de flores blancas y verdes" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="#inicio" aria-label="Volver al inicio Golden Maison">
+          <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="Ícono floral Golden Maison">
+            <circle cx="32" cy="32" r="5.5" fill="#D4AF37"></circle>
+            <ellipse cx="32" cy="15" rx="6.6" ry="13" fill="#FFFFFF"></ellipse>
+            <ellipse cx="32" cy="49" rx="6.6" ry="13" fill="#FFFFFF"></ellipse>
+            <ellipse cx="15" cy="32" rx="13" ry="6.6" fill="#FFFFFF"></ellipse>
+            <ellipse cx="49" cy="32" rx="13" ry="6.6" fill="#FFFFFF"></ellipse>
+            <ellipse cx="20" cy="20" rx="6" ry="12" fill="#FFFFFF" transform="rotate(-45 20 20)"></ellipse>
+            <ellipse cx="44" cy="20" rx="6" ry="12" fill="#FFFFFF" transform="rotate(45 44 20)"></ellipse>
+            <ellipse cx="20" cy="44" rx="6" ry="12" fill="#FFFFFF" transform="rotate(45 20 44)"></ellipse>
+            <ellipse cx="44" cy="44" rx="6" ry="12" fill="#FFFFFF" transform="rotate(-45 44 44)"></ellipse>
+          </svg>
+          <span class="brand-name">
+            <span>GOLDEN MAISON</span>
+            <span>- Studio Floral</span>
+          </span>
+        </a>
+        <p>Golden Maison Studio Floral - Elegancia en cada detalle.</p>
+      </div>
+
+      <div class="footer-links" aria-label="Datos y redes sociales">
+        <span class="footer-location">Provincia de Panamá</span>
+        <a href="https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="instagram" aria-hidden="true"></i>
+          @golden_mflowers
+        </a>
+      </div>
+
+      <div class="footer-payments" aria-label="Métodos de pago">
+        <span>Yappy</span>
+        <span>ACH</span>
+        <span>Cash</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const instagramUrl = "https://www.instagram.com/golden_mflowers?stkn=MXFuNGJzNWtweWsxMQ==";
+
+    window.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      document.querySelectorAll('a[href="#menu-floral"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          document.querySelector("#menu-floral")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector("#navLinks");
+
+      toggle?.addEventListener("click", () => {
+        const isOpen = document.body.classList.toggle("menu-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+      });
+
+      navLinks?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.body.classList.remove("menu-open");
+          toggle?.setAttribute("aria-expanded", "false");
+          toggle?.setAttribute("aria-label", "Abrir menú");
+        });
+      });
+
+      document.querySelectorAll('a[href^="https://www.instagram.com/golden_mflowers"]').forEach((link) => {
+        link.href = instagramUrl;
+      });
+
+      const revealItems = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      revealItems.forEach((item) => observer.observe(item));
+    });
+  </script>
+</body>
+</html>
